@@ -1,0 +1,6 @@
+[submodule "front"]
+	path = front
+	url = git@github.com:innercircle-byebye/ft_transcendence-front.git
+[submodule "back"]
+	path = back
+	url = git@github.com:innercircle-byebye/ft_transcendence-back.git
