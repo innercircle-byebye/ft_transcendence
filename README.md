@@ -1,7 +1,7 @@
 # ft_transcendence
-ft_transcendence for innercircle-byeby다
+ft_transcendence for innercircle-byebye
 
-
+개발환경 셋업용
 ## 유의사항
 
 - setup.sh 명령어 먼저 돌려주세요
