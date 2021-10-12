@@ -10,7 +10,7 @@ function my_function(){
 		echo -n "git clone $repo front; git clone git@github.com:innercircle-byebye/ft_transcendence-back.git back"
 		echo -e "\n"
 	else
-		echo -n "git clone $repo back; git clone git@github.com:innercircle-byebye/ft_transcendence-front.git front\n\n"
+		echo -n "git clone $repo back; git clone git@github.com:innercircle-byebye/ft_transcendence-front.git front"
 		echo -e "\n"
 	fi
 
@@ -59,10 +59,10 @@ do
 done
 
 echo -e "==================Summary====================="
-echo -e "i am :"
-echo -e "\t$front_or_back"
-echo -e "forked repo address:"
-echo -e "\t$forked_repo"
+echo -e "i am :\n"
+echo -e "\t$front_or_back\n"
+echo -e "forked repo address:\n"
+echo -e "\t$forked_repo\n"
 echo -e "=============================================="
 
 echo -e "correct?"

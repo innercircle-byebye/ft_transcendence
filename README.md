@@ -13,4 +13,4 @@ git remote add upstream [프론트/백 레포 주소]
 ```
 ## 푸시한 로컬 브랜치 다시 가져 오는법
 
-`git remote update` -> `git pull [작업하던 브랜치]`
+https://cjh5414.github.io/get-git-remote-branch/
