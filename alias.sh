@@ -1,3 +1,6 @@
+
+################### ft_transcendence (innercircle-byebye) ###################
+
 ### Docker compose commands
 
 ## for development environment
@@ -31,3 +34,5 @@ alias docker-rm-all-images='docker rmi $(docker images -a -q)'
 alias docker-rm-all-containers='docker rm $(docker ps -a -q)'
 alias docker-rm-all-volumes='docker volume rm $(docker volume ls -q --filter dangling=true)'
 alias docker-rm-all='docker stop $(docker ps -a -q) ; docker-rm-all-containers; docker-rm-all-images; docker-rm-all-volumes'
+
+################### ft_transcendence (innercircle-byebye) ###################
