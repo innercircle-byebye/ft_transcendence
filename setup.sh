@@ -1,14 +1,16 @@
 #!/bin/bash
 
 function my_function(){
+	local front_or_back="$1"
+    local repo="$2"
 	echo -e "copy and paste below code and execute:\n\n"
 	echo -n "rm -rf .git .gitmodules front back; "
-	if (( $1 == "front" ))
+	if [ $front_or_back == "front" ]
 	then
-		echo -n "git clone $2 front; git clone git@github.com:innercircle-byebye/ft_transcendence-back.git back"
+		echo -n "git clone $repo front; git clone git@github.com:innercircle-byebye/ft_transcendence-back.git back"
 		echo -e "\n"
 	else
-		echo -n "git clone $2 back; git clone git@github.com:innercircle-byebye/ft_transcendence-front.git front\n\n"
+		echo -n "git clone $repo back; git clone git@github.com:innercircle-byebye/ft_transcendence-front.git front\n\n"
 		echo -e "\n"
 	fi
 
