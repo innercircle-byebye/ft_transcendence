@@ -17,7 +17,7 @@ alias prod-down="docker compose -f docker-compose.yml -f docker-compose.prod.yml
 alias front-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml exec front"
 
 ## back
-alias back-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml exec front"
+alias back-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back"
 
 ## backend dev typeorm
 alias back-dev-typeorm='docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back npm run typeorm'

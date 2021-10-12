@@ -4,7 +4,7 @@ function my_function(){
 	local front_or_back="$1"
     local repo="$2"
 	echo -e "copy and paste below code and execute:\n\n"
-	echo -n "rm -rf .git .gitmodules front back; "
+	echo -n "rm -rf .gitmodules front back; "
 	if [ $front_or_back == "front" ]
 	then
 		echo -n "git clone $repo front; git clone git@github.com:innercircle-byebye/ft_transcendence-back.git back"
