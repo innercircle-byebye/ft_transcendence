@@ -1,0 +1,35 @@
+FROM node:lts AS development
+
+WORKDIR /usr/src/app
+
+COPY ./front/package*.json ./
+
+RUN npm install
+
+COPY ./front .
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
+
+FROM node:lts AS production
+
+WORKDIR /usr/src/app
+
+ENV NODE_ENV production
+
+RUN groupadd --gid 1001 nodejs
+RUN useradd --uid 1001 --gid 1001 nextjs
+
+COPY --from=development /usr/src/app/public ./public
+COPY --from=development --chown=nextjs:nodejs /usr/src/app/.next ./.next
+COPY --from=development /usr/src/app/node_modules ./node_modules
+COPY --from=development /usr/src/app/package.json ./package.json
+
+USER nextjs
+
+EXPOSE 3000
+
+CMD ["npm", "run", "prod"]
