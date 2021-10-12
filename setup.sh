@@ -57,7 +57,8 @@ do
 done
 
 echo -e "==================Summary====================="
-echo -e "i am : $front_or_back"
+echo -e "i am :"
+echo -e "\t$front_or_back"
 echo -e "forked repo address:"
 echo -e "\t$forked_repo"
 echo -e "=============================================="
