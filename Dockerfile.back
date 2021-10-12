@@ -14,7 +14,6 @@ RUN npm run build
 
 CMD ["npm", "run", "start:dev"]
 
-
 FROM node:lts AS production
 
 ARG NODE_ENV=production
