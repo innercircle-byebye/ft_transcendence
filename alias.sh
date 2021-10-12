@@ -22,6 +22,7 @@ alias front-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml 
 ## back
 alias back-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back"
 
+alias back-dev-db-rm="docker volume rm $(docker volume ls -q --filter dangling=true) && rm -rf ./back/db"
 ## backend dev typeorm
 alias back-dev-typeorm='docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back npm run typeorm'
 alias back-dev-seed='docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back npm run seed'
