@@ -7,10 +7,10 @@ function my_function(){
 	echo -n "rm -rf .gitmodules front back; "
 	if [ $front_or_back == "front" ]
 	then
-		echo -n "git clone $repo front; git clone git@github.com:innercircle-byebye/ft_transcendence-back.git back"
+		echo -n "git clone $repo front; git clone https://github.com/innercircle-byebye/ft_transcendence-back.git back"
 		echo -e "\n"
 	else
-		echo -n "git clone $repo back; git clone git@github.com:innercircle-byebye/ft_transcendence-front.git front"
+		echo -n "git clone $repo back; git clone https://github.com/innercircle-byebye/ft_transcendence-front.git front"
 		echo -e "\n"
 	fi
 
