@@ -10,7 +10,7 @@ COPY ./front .
 
 RUN npm run build
 
-EXPOST ${FRONT_PORT}
+EXPOSE ${FRONT_PORT}
 
 CMD ["npm", "run", "dev"]
 
