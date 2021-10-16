@@ -4,10 +4,10 @@
 ### Docker compose commands
 
 ## for development environment
-alias dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml"
-alias dev-up="docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build"
-alias dev-up-build="docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build"
-alias dev-down="docker compose -f docker-compose.yml -f docker-compose.dev.yml down"
+alias dev="docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml"
+alias dev-up="docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml up --build"
+alias dev-up-build="docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml up --build"
+alias dev-down="docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml down"
 
 ## for production environment
 alias prod="docker compose -f docker-compose.yml -f docker-compose.prod.yml"
@@ -17,17 +17,17 @@ alias prod-down="docker compose -f docker-compose.yml -f docker-compose.prod.yml
 
 ### docker-compose execute container
 ## front
-alias front-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml exec front"
+alias front-dev="docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml exec front"
 
 ## back
-alias back-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back"
+alias back-dev="docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml exec back"
 
-alias back-dev-db-rm="docker volume rm $(docker volume ls -q --filter dangling=true) && rm -rf ./back/db"
+alias back-dev-db-rm="docker volume rm $(docker volume ls -q --filter dangling=true) ; rm -rf ./back/db"
 ## backend dev typeorm
-alias back-dev-typeorm='docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back npm run typeorm'
-alias back-dev-seed='docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back npm run seed'
-alias back-dev-seed-config='docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back npm run seed:config'
-alias back-dev-seed-run='docker compose -f docker-compose.yml -f docker-compose.dev.yml exec back npm run seed:run'
+alias back-dev-typeorm='docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml exec back npm run typeorm'
+alias back-dev-seed='docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml exec back npm run seed'
+alias back-dev-seed-config='docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml exec back npm run seed:config'
+alias back-dev-seed-run='docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.dev.yml exec back npm run seed:run'
 
 
 ## docker related commands
