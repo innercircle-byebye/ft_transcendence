@@ -20,6 +20,8 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - ./back/db/pgconf:/etc/postgresql
       - ./back/db/pglog:/var/log/postgresql
   front: # 컨테이너 이름
+    env_file:
+     - ./.env.development
     build:
       target: development
     volumes: # 실시간 코드 수정을 위한 volumes 설정
