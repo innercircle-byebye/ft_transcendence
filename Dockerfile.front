@@ -2,7 +2,7 @@ FROM node:lts AS development
 
 WORKDIR /usr/src/app
 
-COPY ./front/package*.json ./
+COPY ./front/package.json ./
 
 RUN npm install
 
