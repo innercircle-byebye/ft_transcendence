@@ -2,7 +2,7 @@ FROM node:lts AS development
 
 WORKDIR /usr/src/app
 
-COPY ./back/package*.json ./
+COPY ./back/package.json ./
 
 RUN npm install glob rimraf
 
