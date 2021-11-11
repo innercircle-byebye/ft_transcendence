@@ -2,10 +2,8 @@ FROM node:14
 
 WORKDIR /usr/src/app
 
-COPY ./back/package.json /usr/src/app/
+COPY ./back /usr/src/app/
 RUN NODE_ENV=production npm install --legacy-peer-deps --production
-
-COPY ./back /usr/src/app
 
 RUN npm run build
 
