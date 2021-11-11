@@ -1,12 +1,9 @@
-FROM node:lts
-
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+FROM node:l14
 
 WORKDIR /usr/src/app
 
 COPY ./back/package.json ./
-RUN NODE_ENV=production npm install --production
+RUN NODE_ENV=production npm install --legacy-peer-deps --production
 
 COPY . .
 
