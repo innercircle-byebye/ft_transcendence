@@ -20,7 +20,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     image: postgres:latest # 사용할 이미지
     container_name:  "db-postgres" # 컨테이너 이름 설정
     environment:
-      - TZ=${TZ}
+      - TZ=Asia/Seoul
     env_file:
       - ./.env.development
     ports:
