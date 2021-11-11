@@ -7,6 +7,8 @@ RUN NODE_ENV=production npm install --legacy-peer-deps --production
 
 COPY ./back /usr/src/app
 
+RUN nest build
+
 EXPOSE 3005
 
 CMD ["node", "dist/main"]
