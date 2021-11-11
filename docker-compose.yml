@@ -8,7 +8,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - ./back:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - "${BACK_PORT}:${BACK_PORT}"
+      - "3005:3005"
     build:
       context: .
       dockerfile: Dockerfile.back # 도커파일 이름
@@ -24,7 +24,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     env_file:
       - ./.env.development
     ports:
-      - "${POSTGRES_DB_PORT}:${POSTGRES_DB_PORT}" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
+      - "5432:5432" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
     volumes:
       - ./back/db/pgdata:/var/lib/postgresql/data
       - ./back/db/pgconf:/etc/postgresql
@@ -33,7 +33,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     container_name: "front-nextjs" # 컨테이너 이름 설정
     build:
       context: . # 도커파일이 위치한 위치
-    dockerfile: Dockerfile.front # 도커파일 이름
+      dockerfile: Dockerfile.front # 도커파일 이름
     env_file:
      - ./.env.development
     volumes: # 실시간 코드 수정을 위한 volumes 설정
@@ -41,4 +41,4 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - /usr/src/app/node_modules
       - /usr/src/app/.next
     ports:
-      - "${FRONT_PORT}:${FRONT_PORT}"
+      - "3000:3000"
