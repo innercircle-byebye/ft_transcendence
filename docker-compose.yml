@@ -4,8 +4,6 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     container_name: "back-nestjs" # 컨테이너 이름 설정
     env_file:
      - ./.env.development
-    build:
-      target: development
     volumes: # 실시간 코드 수정을 위한 volumes 설정
       - ./back:/usr/src/app
       - /usr/src/app/node_modules
@@ -38,8 +36,6 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     dockerfile: Dockerfile.front # 도커파일 이름
     env_file:
      - ./.env.development
-    build:
-      target: development
     volumes: # 실시간 코드 수정을 위한 volumes 설정
       - ./front:/usr/src/app
       - /usr/src/app/node_modules
