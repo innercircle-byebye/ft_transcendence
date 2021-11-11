@@ -23,7 +23,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     container_name:  "db-postgres" # 컨테이너 이름 설정
     environment:
       - TZ=${TZ}
-        env_file:
+    env_file:
       - ./.env.development
     ports:
       - "${POSTGRES_DB_PORT}:${POSTGRES_DB_PORT}" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
@@ -36,7 +36,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     build:
       context: . # 도커파일이 위치한 위치
     dockerfile: Dockerfile.front # 도커파일 이름
-        env_file:
+    env_file:
      - ./.env.development
     build:
       target: development
