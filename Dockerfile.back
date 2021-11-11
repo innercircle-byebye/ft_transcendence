@@ -2,10 +2,10 @@ FROM node:14
 
 WORKDIR /usr/src/app
 
-COPY ./back/package.json ./
+COPY ./back/package.json /usr/src/app/
 RUN NODE_ENV=production npm install --legacy-peer-deps --production
 
-COPY . .
+COPY . /usr/src/app
 
 EXPOSE 3005
 
