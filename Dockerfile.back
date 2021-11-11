@@ -7,7 +7,7 @@ RUN NODE_ENV=production npm install --legacy-peer-deps --production
 
 COPY ./back /usr/src/app
 
-RUN npm build
+RUN npm run build
 
 EXPOSE 3005
 
