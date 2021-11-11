@@ -2,19 +2,47 @@ version: "3" # 파일 규격 버전
 services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
   back:
     container_name: "back-nestjs" # 컨테이너 이름 설정
+    env_file:
+     - ./.env.development
+    build:
+      target: development
+    volumes: # 실시간 코드 수정을 위한 volumes 설정
+      - ./back:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "${BACK_PORT}:${BACK_PORT}"
     build:
       context: .
       dockerfile: Dockerfile.back # 도커파일 이름
     depends_on:
       - db
     restart: unless-stopped
+
   db:
     image: postgres:latest # 사용할 이미지
     container_name:  "db-postgres" # 컨테이너 이름 설정
     environment:
       - TZ=${TZ}
+        env_file:
+      - ./.env.development
+    ports:
+      - "${POSTGRES_DB_PORT}:${POSTGRES_DB_PORT}" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
+    volumes:
+      - ./back/db/pgdata:/var/lib/postgresql/data
+      - ./back/db/pgconf:/etc/postgresql
+      - ./back/db/pglog:/var/log/postgresql
   front: # 컨테이너 이름
     container_name: "front-nextjs" # 컨테이너 이름 설정
     build:
       context: . # 도커파일이 위치한 위치
-      dockerfile: Dockerfile.front # 도커파일 이름
+    dockerfile: Dockerfile.front # 도커파일 이름
+        env_file:
+     - ./.env.development
+    build:
+      target: development
+    volumes: # 실시간 코드 수정을 위한 volumes 설정
+      - ./front:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
