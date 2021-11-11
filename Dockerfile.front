@@ -10,7 +10,7 @@ COPY ./front .
 
 RUN npm run build
 
-EXPOSE ${FRONT_PORT}
+EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
 
@@ -30,6 +30,6 @@ COPY --from=development /usr/src/app/package.json ./package.json
 
 USER nextjs
 
-EXPOSE ${FRONT_PORT}
+EXPOSE 3000
 
 CMD ["npm", "run", "prod"]

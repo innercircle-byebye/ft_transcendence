@@ -12,7 +12,7 @@ COPY ./back .
 
 RUN npm run build
 
-EXPOSE ${BACK_PORT}
+EXPOSE 3005
 
 CMD ["npm", "run", "start:dev"]
 
@@ -30,6 +30,6 @@ COPY . .
 
 COPY --from=development /usr/src/app/dist ./dist
 
-EXPOSE ${BACK_PORT}
+EXPOSE 3005
 
 CMD ["node", "dist/main"]
