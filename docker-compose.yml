@@ -1,11 +1,13 @@
 version: "3" # 파일 규격 버전
 services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
   back:
-    container_name: "back-nestjs" # 컨테이너 이름 설정
+    container_name: back-nestjs # 컨테이너 이름 설정
     env_file:
      - ./.env.development
     ports:
       - "3005:3005"
+    networks:
+      - app
     build:
       context: .
       dockerfile: Dockerfile.back # 도커파일 이름
@@ -14,7 +16,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     restart: unless-stopped
   db:
     image: postgres:11 # 사용할 이미지
-    container_name:  "db-postgres" # 컨테이너 이름 설정
+    container_name:  db-postgres # 컨테이너 이름 설정
     environment:
       - TZ=Asia/Seoul
     env_file:
@@ -24,11 +26,17 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     volumes:
       - ./db_conf:/docker-entrypoint-initdb.d
   front: # 컨테이너 이름
-    container_name: "front-nextjs" # 컨테이너 이름 설정
+    container_name: front-nextjs # 컨테이너 이름 설정
     build:
       context: . # 도커파일이 위치한 위치
       dockerfile: Dockerfile.front # 도커파일 이름
+    networks:
+      - app
     env_file:
      - ./.env.development
     ports:
       - "3000:3000"
+
+networks:
+  app:
+    driver: bridge
