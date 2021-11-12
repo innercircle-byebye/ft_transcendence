@@ -1,11 +1,6 @@
 FROM postgres:latest
 
-USER postgres
-
-RUN whoami
-
-ADD ./db_conf/init.sql /docker-entrypoint-initdb.d/
-# RUN chmod +x postgres:postgres /docker-entrypoint-initdb.d/init.sql
+COPY ./db_conf/init.sql /docker-entrypoint-initdb.d/init.sql
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 5432

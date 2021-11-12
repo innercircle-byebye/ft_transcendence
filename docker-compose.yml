@@ -15,6 +15,9 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
 
   db:
     image: postgres:latest # 사용할 이미지
+    build:
+      context: . # 도커파일이 위치한 위치
+      dockerfile: Dockerfile.db # 도커파일 이름
     container_name:  "db-postgres" # 컨테이너 이름 설정
     environment:
       - TZ=Asia/Seoul
@@ -22,9 +25,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - ./.env.development
     ports:
       - "5432:5432" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
-    user: 1000:1000
-    volumes:
-      - ./db_conf:/docker-entrypoint-initdb.d
+
   front: # 컨테이너 이름
     container_name: "front-nextjs" # 컨테이너 이름 설정
     build:

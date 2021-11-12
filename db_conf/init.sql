@@ -1,0 +1,3 @@
+CREATE USER admin WITH PASSWORD 'password';
+CREATE DATABASE ponggame;
+GRANT ALL PRIVILEGES ON DATABASE ponggame TO admin;
