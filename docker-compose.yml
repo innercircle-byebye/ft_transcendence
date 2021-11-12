@@ -12,12 +12,13 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     depends_on:
       - db
     networks:
-      - webapp
-      - database
+      default:
+        aliases:
+          - back-nestjs
     restart: unless-stopped
 
   db:
-    image: postgres:latest # 사용할 이미지
+    image: postgres:11 # 사용할 이미지
     container_name:  "db-postgres" # 컨테이너 이름 설정
     environment:
       - TZ=Asia/Seoul
@@ -26,7 +27,9 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     ports:
       - "5432:5432" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
     networks:
-      - database
+      default:
+        aliases:
+          - db-postgres
 
   front: # 컨테이너 이름
     container_name: "front-nextjs" # 컨테이너 이름 설정
@@ -38,10 +41,9 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     ports:
       - "3000:3000"
     networks:
-      - webapp
+      default:
+        aliases:
+          - front-nextjs
 
 networks:
-  webapp:
-    driver: bridge
-  database:
-    driver: bridge
+  default:

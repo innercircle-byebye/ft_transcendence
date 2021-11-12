@@ -11,4 +11,4 @@ RUN npm run build
 
 EXPOSE 3005
 
-CMD ["node", "dist/main"]
+CMD npm run start:prod ; npm run typeorm schema:sync ; npm run seed:run
