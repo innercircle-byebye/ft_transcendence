@@ -2,7 +2,7 @@
 ################### ft_transcendence (innercircle-byebye) ###################
 
 ## backend dev typeorm
-alias back-dev-typeorm='docker-compose back npm run typeorm'
+alias back-dev-typeorm='docker-compose exec back npm run typeorm'
 alias back-dev-seed='docker-compose exec back npm run seed'
 alias back-dev-seed-config='docker-compose exec back npm run seed:config'
 alias back-dev-seed-run='docker-compose exec back npm run seed:run'
