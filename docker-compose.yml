@@ -1,4 +1,4 @@
-version: "3" # 파일 규격 버전
+version: "2" # 파일 규격 버전
 services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
   back:
     container_name: "back-nestjs" # 컨테이너 이름 설정
@@ -12,7 +12,8 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     depends_on:
       - db
     networks:
-      - app
+      - webapp
+      - database
     restart: unless-stopped
 
   db:
@@ -25,7 +26,8 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     ports:
       - "5432:5432" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
     networks:
-      - app
+      - database
+
   front: # 컨테이너 이름
     container_name: "front-nextjs" # 컨테이너 이름 설정
     build:
@@ -36,8 +38,10 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     ports:
       - "3000:3000"
     networks:
-      - app
+      - webapp
 
 networks:
-  app:
-    driver: host
+  webapp:
+    driver: bridge
+  database:
+    driver: bridge

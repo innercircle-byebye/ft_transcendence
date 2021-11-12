@@ -3,6 +3,8 @@ FROM node:14
 WORKDIR /usr/src/app
 
 COPY ./back /usr/src/app/
+RUN rm -rf /usr/src/app/node_modules /usr/src/app/package_lock.json
+
 RUN NODE_ENV=production npm install --legacy-peer-deps --production
 
 RUN npm run build
