@@ -3,7 +3,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
   back:
     container_name: "back-nestjs" # 컨테이너 이름 설정
     env_file:
-     - ./.env.development
+     - ./.env
     ports:
       - "3005:3005"
     build:
@@ -12,7 +12,6 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     depends_on:
       - db
     restart: unless-stopped
-
   db:
     image: postgres:11 # 사용할 이미지
     container_name:  "db-postgres" # 컨테이너 이름 설정

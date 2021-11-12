@@ -1,7 +1,0 @@
-FROM postgres:latest
-
-COPY ./db_conf/init.sql /docker-entrypoint-initdb.d/init.sql
-
-ENTRYPOINT ["docker-entrypoint.sh"]
-EXPOSE 5432
-CMD ["postgres"]
