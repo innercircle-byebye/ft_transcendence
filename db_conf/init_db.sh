@@ -1,0 +1,9 @@
+#!/bin/bash
+export POSTGRES_INITDB_ARGS=--encoding=UTF-8
+export POSTGRES_USER=admin
+export POSTGRES_DB=ponggame
+export POSTGRES_PASSWORD=password
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+    GRANT ALL PRIVILEGES ON DATABASE "$POSTGRES_DB" TO "$POSTGRES_USER";
+EOSQL
