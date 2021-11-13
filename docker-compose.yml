@@ -1,9 +1,22 @@
 version: "2" # 파일 규격 버전
 services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
+  db:
+    image: postgres:11 # 사용할 이미지
+    container_name:  "db-postgres" # 컨테이너 이름 설정
+    environment:
+      - TZ=Asia/Seoul
+    env_file:
+      - ./.env
+    ports:
+      - "5432:5432" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
+    networks:
+      default:
+        aliases:
+          - db-postgres
   back:
     container_name: "back-nestjs" # 컨테이너 이름 설정
     env_file:
-     - ./.env.development
+     - ./.env
     ports:
       - "3005:3005"
     build:
@@ -16,34 +29,18 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
         aliases:
           - back-nestjs
     restart: unless-stopped
-
-  db:
-    image: postgres:11 # 사용할 이미지
-    container_name:  "db-postgres" # 컨테이너 이름 설정
-    environment:
-      - TZ=Asia/Seoul
-    env_file:
-      - ./.env.development
-    ports:
-      - "5432:5432" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
-    networks:
-      default:
-        aliases:
-          - db-postgres
-
   front: # 컨테이너 이름
     container_name: "front-nextjs" # 컨테이너 이름 설정
     build:
       context: . # 도커파일이 위치한 위치
       dockerfile: Dockerfile.front # 도커파일 이름
     env_file:
-     - ./.env.development
+     - ./.env
     ports:
       - "3000:3000"
     networks:
       default:
         aliases:
           - front-nextjs
-
 networks:
   default:
